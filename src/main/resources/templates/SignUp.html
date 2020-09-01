@@ -1,0 +1,42 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Sign Up</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7; IE=EmulateIE9">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/SignUp.css}" />
+</head>
+<body style="background: url('/images/bg-02.jpg');">
+<div class="container"><br>
+			<!-- freshdesignweb top bar -->
+           	<header>
+				<h1>Sign Up</h1>
+            </header>       <br><br>
+      <div  class="form" >
+          <form id="contactform" th:object="${user}" th:action="@{/Register}" method="post" >
+    			<p class="contact"><label >First Name</label></p><br>
+                <input id="fname"  th:field="*{Firstname}"   placeholder="First name" required="" tabindex="1" type="text">
+
+                <p class="contact"><label >Last Name</label></p><br>
+                <input id="lname" th:field="*{lastname}"  placeholder="last name" required="" tabindex="1" type="text">
+    			 
+    			<p class="contact"><label >Email </label></p><br>
+    			<input id="Email" th:field="*{Email}" placeholder="xxxx@gmail.com" required="" type="email">
+                
+                <p class="contact"><label >Username</label></p><br>
+    			<input id="username"  th:field="*{username}" placeholder="username" required="" tabindex="2" type="text"><br>
+    			 
+                <p class="contact"><label >Password</label></p><br>
+    			<input type="password"  th:field="*{password}" id="password"  required=""><br><br><br>
+                        
+
+
+            <input class="buttom" name="submit" id="submit" tabindex="5" value="Sign up" type="submit" style="text-align:center ;">
+            
+            
+   </form> 
+</div>      
+</div>
+
+</body>
+</html>

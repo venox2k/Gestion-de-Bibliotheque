@@ -1,0 +1,80 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" >
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}" />
+</head>
+<body style="background: url('/Images/bg-02.jpg');">
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid" >
+
+        <ul class="nav navbar-nav" style="margin-left: 5%;">
+            <li class="active"><a href="/home">Home</a></li>
+            <li><a href="/Emprunts">LIste des Emprunts</a></li>
+            <li  class="active"><a href="/logout">Deconnexion</a></li>
+
+        </ul>
+
+    </div>
+</nav>
+<div class="limiter">
+    <div class="container-table100">
+        <div class="wrap-table100">
+            <div class="table100 ver1 m-b-110">
+                <div class="table100-head">
+                    <table>
+                        <thead>
+                        <tr class="row100 head">
+                            <th class="cell100 column1">ISBN</th>
+                            <th class="cell100 column2">Titre</th>
+                            <th class="cell100 column3">Date de Publication</th>
+                            <th class="cell100 column4">Auteur</th>
+                            <th class="cell100 column5">genre</th>
+                            <th class="cell100 column6">Consulter</th>
+
+
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+
+                <div class="table100-body js-pscroll">
+                    <table>
+                        <tbody th:each="livre : ${livres}">
+                        <tr class="row100 body">
+                            <td class="cell100 column1"><span class="name-meta" th:text="${livre.ISBN}"></span></td>
+                            <td class="cell100 column2"><span class="name-meta" th:text="${livre.Titre}"></span></td>
+                            <td class="cell100 column3"><span class="name-meta" th:text="${livre.date_sortie}"></span></td>
+                            <td class="cell100 column4"><span class="name-meta" th:text="${livre.Auteur.FirstName +' ' +livre.Auteur.LastName}"></span></td>
+                            <td class="cell100 column5"><span class="name-meta" th:text="${livre.genre}"></span></td>
+                            <td class="cell100 column6">
+
+                                <a th:href="@{/ShowLivre(livreId=${livre.ISBN})}"><button type="submit" value="Submit" class="btn btn-primary">Consulter</button></a>
+
+                            </td>
+
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+
+
+
+</body>
+</html>

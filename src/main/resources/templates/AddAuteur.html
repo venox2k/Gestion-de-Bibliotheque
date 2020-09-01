@@ -1,0 +1,38 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Sign Up</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7; IE=EmulateIE9">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/SignUp.css}" />
+</head>
+<body style="background: url('/images/bg-02.jpg');">
+<div class="container"><br>
+			<!-- freshdesignweb top bar -->
+
+                <h1 id="title" class="rounded-lg"><span > Ajouter Auteur </span></h1>
+                   <br><br>
+      <div  class="form" >
+          <form id="contactform" th:object="${aut}" th:action="@{/AddAuteur}" method="post" >
+
+    			<p class="contact"><label >First Name</label></p><br>
+                <input   th:field="*{FirstName}"   placeholder="xxxxx" required="" tabindex="1" type="text"><br>
+
+                <p class="contact"><label >Last Name</label></p><br>
+                <input  th:field="*{LastName}"  placeholder="xxxxxx" required="" tabindex="1" type="text"><br><br>
+    			 
+
+
+
+                        
+
+
+            <input class="buttom" name="submit" id="submit" tabindex="5" value="Enregister" type="submit" style="text-align:center ;">
+            
+            
+   </form> 
+</div>      
+</div>
+
+</body>
+</html>

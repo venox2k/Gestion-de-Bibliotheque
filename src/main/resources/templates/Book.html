@@ -1,0 +1,131 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title th:text="${livre.Titre}"></title>
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7; IE=EmulateIE9">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/Book.css}" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+
+
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid" >
+            <ul class="nav navbar-nav" style="margin-left: 5%;" id="Sub">
+                <li class="active"><a href="/home">Home</a></li>
+                <li><a href="/Emprunts">LIste des Emprunts</a></li>
+                <li  class="active"><a href="/logout">Deconnexion</a></li>
+
+            </ul>
+            <ul class="nav navbar-nav" style="margin-left: 5%;" id="Admin">
+                <li><a href="/home">Liste des Livres</a></li>
+                <li><a href="/AllEmprunts">LIste des Emprunts</a></li>
+                <li><a href="/AllUsers">Gestion des Users</a></li>
+                <li><a href="/AddBook">Ajouter Livre</a></li>
+
+                <li  class="active"><a href="/logout">Deconnexion</a></li>
+
+            </ul>
+        </div>
+      </nav>
+<div class="container">
+           	<header style="background-color :white ;">
+                <h1><span th:text="${livre.Titre}"></span></h1>
+            </header>
+    <br><br>
+
+    <div  class="form" >
+          <div>
+
+              <img th:src="@{${'/images/Livres/'+livre.Picture}}"  style="display: block;margin-left: auto;border:1px solid red ; margin-right: auto;"><br>
+              <p style="text-align: center; width: 100%;">
+                  <a th:href="@{/Emprunter(livreis=${livre.ISBN})}"><input class="Add" name="submit"  id="submit" tabindex="5" value="Emprunter" type="submit" ></a>
+
+              </p>
+
+            <table class="table table-striped">
+                <tr>
+                    <th >ISBN</th>
+                    <td>
+                        <span th:text="${livre.ISBN}"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th >Auteur</th>
+                    <td>
+                        <span th:text="${livre.Auteur.FirstName +' ' +livre.Auteur.LastName}"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th >Date de Publication</th>
+                    <td>
+                        <span th:text="${livre.date_sortie}"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th >genre</th>
+                    <td>
+                        <span th:text="${livre.genre}"></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th >Description</th>
+                    <td>
+                        <span th:text="${livre.Description}"></span>
+                    </td>
+                </tr>
+
+
+
+
+
+
+
+            </table>
+
+
+              
+          </div>
+        <br>
+        <br>
+
+
+
+
+
+
+</div>      
+</div>
+    <p id="test" th:text="${existe}"  ></p>
+    <p id="ad" th:text="${ad}"  ></p>
+
+
+    <script th:src="@{/js/jquery-3.5.0.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+<script>
+$(document).ready(function() {
+     if($('#test').text()=='true')
+      {
+         $(".Add").attr("value","Owned");
+
+      }
+       if($('#ad').text()=='true')
+      {
+         $(".Add").hide();
+         $("#Admin").show();
+         $("#Sub").hide();
+
+      }else
+      {
+         $(".Add").show();
+         $("#Admin").hide();
+         $("#Sub").show();
+      }
+    });
+</script>
+
+</body>
+</html>

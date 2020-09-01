@@ -1,0 +1,63 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Ajouter Livre</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7; IE=EmulateIE9">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/SignUp.css}" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" >
+
+</head>
+<body style="background: url('/images/bg-02.jpg');">
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid" >
+
+        <ul class="nav navbar-nav" style="margin-left: 5%;">
+            <li><a href="/home">Liste des Livres</a></li>
+            <li><a href="/AllEmprunts">LIste des Emprunts</a></li>
+            <li><a href="/AllUsers">Gestion des Users</a></li>
+            <li><a href="/AddBook">Ajouter Livre</a></li>
+
+            <li  class="active"><a href="/logout">Deconnexion</a></li>
+
+        </ul>
+
+    </div>
+</nav>
+<div class="container"><br>
+
+
+    <h1 id="title" class="rounded-lg"><span > Ajouter Livre </span></h1>
+
+    <br><br>
+      <div  class="form" >
+          <form id="contactform" th:object="${book}" th:action="@{/AddBooks}" method="post"  enctype="multipart/form-data">
+    			<p class="contact"><label >ISBN</label></p><br>
+                <input   th:field="*{ISBN}"   placeholder="xxxxx" required="" tabindex="1" type="text">
+
+                <p class="contact"><label >Titre</label></p><br>
+                <input  th:field="*{Titre}"  placeholder="xxxxxx" required="" tabindex="1" type="text">
+    			 
+
+
+              <p class="contact"><label >Date de Publication</label></p><br>
+              <input   th:field="*{date_sortie}" placeholder="1980" required="" tabindex="2" type="number"><br>
+
+                <p class="contact"><label >Genre</label></p><br>
+    			<input   th:field="*{genre}" placeholder="username" required="" tabindex="2" type="text"><br>
+    			 
+                <p class="contact"><label >Description</label></p><br>
+    			<input type="text"  th:field="*{Description}" id="password"  required=""><br>
+
+              <p class="contact"><label></label>Couverture de  livre</p>
+              <input type="file"   id="img_Profile" accept="image/*" required name="files" ><br><br>
+
+            <input class="buttom" name="submit" id="submit" tabindex="5" value="Continuer" type="submit" style="text-align:center ;">
+            
+            
+   </form> 
+</div>      
+</div>
+
+</body>
+</html>
